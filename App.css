@@ -1,0 +1,182 @@
+
+form {
+  position: relative;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+label {
+  display: inline-block;
+  max-width: 150px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+input, select, textarea {
+  width: calc(100% - 180px);
+  max-width: 300px;
+  margin-bottom: 10px;
+  padding: 0.30rem;
+}
+
+.form-image {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.publication-form {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 2rem;
+  color: maroon;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+.supporting-docs {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.supporting-docs .sup {
+  margin-bottom: 10px;
+  color: maroon;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  flex: 0 0 150px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.form-group input[type="file"] {
+  flex: 1;
+  max-width: 300px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  flex: 1;
+}
+
+.form-group .form-image {
+  flex: 0 0 30px;
+}
+
+.header-container {
+  background-color: rgba(140, 140, 140, 0.5);
+  height: 130px;
+  color: maroon;
+  text-align: center;
+  border: 10px;
+  padding: 10px;
+}
+
+.publication-info {
+  color: maroon;
+}
+
+.author-info {
+  color: maroon;
+}
+
+.sup {
+  color: maroon;
+}
+
+#save-as-btn, #submit-btn {
+  background-color: #4CAF50;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#save-as-btn:hover, #submit-btn:hover {
+  background-color: #3e8e41;
+}
+
+#save-as-btn:active, #submit-btn:active {
+  background-color: #2e6c31;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#save-as-btn, #submit-btn {
+  margin-right: 10px;
+}
+
+.required {
+  color: rgb(255, 0, 0);
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px auto; /* Center horizontally */
+}
+
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #e0e0e0;
+}
+
+#yes-btn {
+  color: #5cb85c; /* Green color for Yes */
+  border-color: #5cb85c;
+}
+
+#no-btn {
+  color: #d9534f; /* Red color for No */
+  border-color: #d9534f;
+}
+
+#yes-btn:hover, #no-btn:hover {
+  color: white;
+}
+
+#yes-btn:active, #no-btn:active {
+  transform: translateY(1px); /* Add a slight downward movement when clicked */
+}
