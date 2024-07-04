@@ -1,10 +1,8 @@
-
-
 import React, { useState } from 'react';
-import './App.css';
+import './Home.css';
 import axios from 'axios';
 
-const App = () => {
+const Home = () => {
   const [formData, setFormData] = useState({
     publicationId: '',
     publicationTitle: '',
@@ -99,153 +97,83 @@ const App = () => {
      }
      return true;
    };
-
-   switch (name) {
-     case 'publicationId':
-     case 'volumeNumber':
-     case 'pageNumber':
-     case 'issueNumber':
-     case 'ISSNnumber':
-     case 'impactFactor':
-     case 'hIndex':
-     case 'citationCnt':
-     case 'facultyId':
-     case 'orcidId':
-     case 'vidwanId':
-     case 'authorId1':
-     case 'authorId2':
-     case 'authorId3':
-     case 'authorId4':
-     case 'authorId5':
-     case 'authorId6':
-     case 'authorId7':
-       if (!numericFieldValidation(name, value)) return;
-       break;
-     case 'publicationTitle':
-     case 'conferenceName':
-     case 'journalName':
-     case 'affiliatingInstitute':
-     case 'publisherName':
-     case 'paperLink':
-     case 'journalLink':
-     case 'technology':
-     case 'domain':
-     case 'branch':
-     case 'facultyName':
-     case 'designation':
-     case 'dept':
-       if (!textFieldValidation(name, value)) return;
-       break;
-     case 'publicationType':
-     case 'conferenceOrJournal':
-     case 'levelOfCirculation':
-     case 'Scoups':
-     case 'webOfScience':
-     case 'SCI':
-     case 'UCGRated':
-     case 'Industry':
-     case 'ForeignAuthor':
-     case 'PublicationStatus':
-     case 'StudentPresence':
-     case 'BestPaperAwarded':
-     case 'Q1Q2Q3Q4':
-     case 'forIndexing':
-     case 'ugcCiting':
-       if (!selectFieldValidation(name, value)) return;
-       break;
-     default:
-       break;
-   }
-
-
-
+   
     setFormData({
-      ...formData,
-      [name]: value,
+      ...formData,[e.target.name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const scriptUrl = 'http://localhost:5000/publicationform';
-    const data = new FormData();
-    Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
-    });
+    
+    try {
+      const scriptUrl = 'http://localhost:5000/publicationform';
 
-    fetch(scriptUrl, {
-      method: 'POST',
-      body: data,
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log('Success:', data);
-        alert('Form submitted successfully!');
-        // Optionally, reset the form data state here
-        setFormData({
-          publicationId: '',
-          publicationTitle: '',
-          publicationType: 'Select',
-          conferenceOrJournal: 'Select',
-          conferenceName: '',
-          journalName: '',
-          volumeNumber: '',
-          pageNumber: '',
-          issueNumber: '',
-          levelOfCirculation: 'Select',
-          dateOfPublication: '',
-          indexedIn: '',
-          indexProof: '',
-          ISSNnumber: '',
-          impactFactor: '',
-          Scoups: 'Select',
-          webOfScience: 'Select',
-          SCI: 'Select',
-          UCGRated: 'Select',
-          ugcProof: '',
-          hIndex: '',
-          citationCnt: '',
-          affiliatingInstitute: '',
-          publisherName: '',
-          paperLink: '',
-          journalLink: '',
-          proof: '',
-          orcidId: '',
-          vidwanId: '',
-          technology: '',
-          domain: '',
-          branch: '',
-          Industry: 'Select',
-          ForeignAuthor: 'Select',
-          PublicationStatus: 'Select',
-          StudentPresence: 'Select',
-          BestPaperAwarded: 'Select',
-          Q1Q2Q3Q4: 'Select',
-          facultyName: '',
-          facultyId: '',
-          designation: '',
-          dept: '',
-          authorId1: '',
-          authorId2: '',
-          authorId3: '',
-          authorId4: '',
-          authorId5: '',
-          authorId6: '',
-          authorId7: '',
-          forIndexing: '',
-          ugcCiting: '',
-          proofDoc: ''
-        });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        alert('There was an error submitting the form. Please try again later.');
+      const response = await axios.post(scriptUrl, formData);
+
+      console.log('Success:', response.data);
+      alert('Form submitted successfully!');
+      
+      setFormData({
+        publicationId: '',
+        publicationTitle: '',
+        publicationType: 'Select',
+        conferenceOrJournal: 'Select',
+        conferenceName: '',
+        journalName: '',
+        volumeNumber: '',
+        pageNumber: '',
+        issueNumber: '',
+        levelOfCirculation: 'Select',
+        dateOfPublication: '',
+        indexedIn: '',
+        indexProof: '',
+        ISSNnumber: '',
+        impactFactor: '',
+        Scoups: 'Select',
+        webOfScience: 'Select',
+        SCI: 'Select',
+        UCGRated: 'Select',
+        ugcProof: '',
+        hIndex: '',
+        citationCnt: '',
+        affiliatingInstitute: '',
+        publisherName: '',
+        paperLink: '',
+        journalLink: '',
+        proof: '',
+        orcidId: '',
+        vidwanId: '',
+        technology: '',
+        domain: '',
+        branch: '',
+        Industry: 'Select',
+        ForeignAuthor: 'Select',
+        PublicationStatus: 'Select',
+        StudentPresence: 'Select',
+        BestPaperAwarded: 'Select',
+        Q1Q2Q3Q4: 'Select',
+        facultyName: '',
+        facultyId: '',
+        designation: '',
+        dept: '',
+        authorId1: '',
+        authorId2: '',
+        authorId3: '',
+        authorId4: '',
+        authorId5: '',
+        authorId6: '',
+        authorId7: '',
+        forIndexing: '',
+        ugcCiting: '',
+        proofDoc: ''
       });
-  };
 
-function changeHandler(){
-  axios.post("http://localhost:5000/publicationform");
-}
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error submitting the form. Please try again later.');
+    }
+  };
 
   return (
     <div className="publication-form">
@@ -554,4 +482,4 @@ function changeHandler(){
   );
 };
 
-export default App;
+export default Home;
